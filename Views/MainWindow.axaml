@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:hyperpomo.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="360" d:DesignHeight="300"
+        x:Class="hyperpomo.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="hyperpomo"
+	    TransparencyLevelHint="AcrylicBlur"
+	    Background="Transparent"
+		ExtendClientAreaToDecorationsHint="True">
+	
+
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Panel>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					MaterialOpacity="0.50" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+
+		<Grid Margin="20">
+				<StackPanel HorizontalAlignment="Center" 
+							VerticalAlignment="Center">
+					<TextBlock Text="{Binding LocalPomoTimer.TimeToString}" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center"/>
+					<WrapPanel>
+						<Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Command="{Binding TimerButtonCommand}">
+							<TextBlock Text="{Binding TimerButtonLabel}" />
+						</Button>
+						<Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" Command="{Binding ResetTimerCommand}">
+							<TextBlock Text="{Binding ResetButtonLabel}" />
+						</Button>
+					</WrapPanel>
+
+				</StackPanel>
+		</Grid>
+	</Panel>
+	
+
+
+</Window>
